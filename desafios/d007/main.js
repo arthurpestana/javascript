@@ -14,7 +14,7 @@ function converter() {
         }
         else {
             let dolar = real/cota
-            res.innerHTML = `Você consegue comprar ` + parseFloat(dolar.toFixed(2)).toString().replace(".", ",") + ` US$ com os reais que você tem na carteira. De acordo com a cotação informada anteriormente.`
+            res.innerHTML = `Você consegue comprar ` + parseFloat(dolar.toFixed(2)).toLocaleString("en-US", {style: "currency", currency: "USD"}).toString().replace(".", ",") + ` com os reais que você tem na carteira. De acordo com a cotação informada anteriormente.`
         }
     }
 }
