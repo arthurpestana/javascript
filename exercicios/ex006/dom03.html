@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições com JS</title>
+</head>
+<body>
+    <h1>Verificando a sua Nacionalidade</h1>
+    <p>
+        Digite o país que você nasceu: <input type="text" name="country" id="country">
+        <input type="button" value="Enviar" onclick="enviar()">
+    </p>
+    <div id="resul">
+
+    </div>
+
+    <script>
+        var resul = document.querySelector("div#resul")
+        
+        function enviar(){
+            var country = document.querySelector("input#country")
+
+            if (country.value == "Brasil"){
+                resul.innerHTML = "Você é <strong>Brasileiro!</strong>"
+            }
+            else {
+                resul.innerHTML = "Você é <strong>Estrangeiro!</strong>"
+            }
+        }
+    </script>
+</body>
+</html>

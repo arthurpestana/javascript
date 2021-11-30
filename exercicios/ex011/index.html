@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Condições com JS</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Verificando a sua Nacionalidade</h1>
-    <p>
-        Digite o país que você nasceu: <input type="text" name="country" id="country">
-        <input type="button" value="Enviar" onclick="enviar()">
-    </p>
-    <div id="resul">
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+    <section>
+        <div>
+            <p>Número: <input type="number" name="Number" id="number"> <input type="button" value="Gerar Tabuada" id="button"></p>
+        </div>
+        <div id="res">
+            <!--<p>Tabuada: </p>
+            <select name="Tabuada" id="seltab" size="10">
 
-    </div>
-
-    <script>
-        var resul = document.querySelector("div#resul")
-        
-        function enviar(){
-            var country = document.querySelector("input#country")
-
-            if (country.value == "Brasil"){
-                resul.innerHTML = "Você é <strong>Brasileiro!</strong>"
-            }
-            else {
-                resul.innerHTML = "Você é <strong>Estrangeiro!</strong>"
-            }
-        }
-    </script>
+            </select>-->
+        </div>
+    </section>
+    <footer>
+        <p>&copy;ArthurHenrique</p>
+    </footer>
+    <script src="main.js"></script>
 </body>
 </html>

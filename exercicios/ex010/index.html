@@ -1,42 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Condições com JS</title>
-    <style>
-        #txtvelo {
-            width: 50px;
-        }
-        #button {
-            margin-left: 10px;
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Sistema de Multas</h1>
-    <p>
-        Velocidade do Carro: <input type="number" name="txtvelo" id="txtvelo"> Km/h
-        <input type="button" value="Enviar" id="button">
-    </p>
-    <div id="resul"></div>
-
-    <script>
-        var button = window.document.querySelector("input#button")
-        button.addEventListener("click", verificar)
-
-        function verificar(){
-            var resul = window.document.querySelector("div#resul")
-            var txtvelo = window.document.querySelector("input#txtvelo")
-            var velo = Number(txtvelo.value)
-
-            resul.innerHTML = `<p>A sua velocidade atual é de <strong>${velo} Km/h</strong></p>`
-            if (velo > 60) {
-                resul.innerHTML += `<p>Você está acima da velocidade permitida. <strong>MULTADO!!</strong></p>`
-            }
-            resul.innerHTML += `<p>Dirija sempre utilizando cinto de segurança!</p>` 
-        }
-    </script>
+    <header>
+        <h1>Vamos Contar</h1>
+    </header>
+    <section>
+        <div>
+            <p>Início: <input type="number" name="txtinicio" id="txtinicio" min="0"></p>
+            <p>Fim: <input type="number" name="txtfim" id="txtfim" min="0"></p>
+            <p>Passo: <input type="number" name="txtpasso" id="txtpasso" min="0"></p>
+            <p><input type="button" value="Contar" id="contar"onclick="contar()"></p>
+        </div>
+        <div id="res">
+            <p>Preparando a contagem...</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy;ArthurHenrique</p>
+    </footer>
+    <script src="main.js"></script>
 </body>
 </html>

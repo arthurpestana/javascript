@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições com JS</title>
+    <style>
+        #txtvelo {
+            width: 50px;
+        }
+        #button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Multas</h1>
+    <p>
+        Velocidade do Carro: <input type="number" name="txtvelo" id="txtvelo"> Km/h
+        <input type="button" value="Enviar" id="button">
+    </p>
+    <div id="resul"></div>
+
+    <script>
+        var button = window.document.querySelector("input#button")
+        button.addEventListener("click", verificar)
+
+        function verificar(){
+            var resul = window.document.querySelector("div#resul")
+            var txtvelo = window.document.querySelector("input#txtvelo")
+            var velo = Number(txtvelo.value)
+
+            resul.innerHTML = `<p>A sua velocidade atual é de <strong>${velo} Km/h</strong></p>`
+            if (velo > 60) {
+                resul.innerHTML += `<p>Você está acima da velocidade permitida. <strong>MULTADO!!</strong></p>`
+            }
+            resul.innerHTML += `<p>Dirija sempre utilizando cinto de segurança!</p>` 
+        }
+    </script>
+</body>
+</html>
