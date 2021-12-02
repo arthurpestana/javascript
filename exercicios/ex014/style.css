@@ -32,6 +32,10 @@ div {
     padding: 20px 0px;
 }
 
+select {
+    width: 150px;
+}
+
 footer {
     text-align: center;
     font-style: italic;
