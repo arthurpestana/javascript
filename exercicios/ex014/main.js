@@ -21,6 +21,20 @@ function inLista(n, l) {
     }
 }
 
+function adicionar() {
+    if (isNumero(num.value) && !inLista(num.value, valores)) {
+        valores.push(Number(num.value))
+        let item = document.createElement("option")
+        item.text = `Valor ${num.value} adicionado.`
+        list.appendChild(item)
+    }
+    else {
+        alert("Valor inválido ou já encontrado na lista!")
+    }
+    num.value = ""
+    num.focus()
+}
+
 function finalizar() {
     if (valores.length == 0) {
         alert("Adicione valores antes de finalizar!")
