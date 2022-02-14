@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções Temporizadoras</title>
+    <style>
+        #div01 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Time Out</h1>
+    <div id="div01"></div><br>
+    <button id="btn01">Iniciar</button>
+    <button id="btn02">Parar</button>
+    <script>
+        let tmp
+
+        function mudaCor() {
+            let obj = document.querySelector("#div01")
+            let r = Math.round(Math.random()*255)
+            let g = Math.round(Math.random()*255)
+            let b = Math.round(Math.random()*255)
+            obj.style.backgroundColor="rgb("+r+","+g+","+b+")"
+        }
+
+        let btn01 = document.querySelector("#btn01").addEventListener("click", iniciar)
+        let btn02 = document.querySelector("#btn02").addEventListener("click", parar)
+
+        function iniciar() {
+            tmp = setInterval(mudaCor, 2000)
+            //let tmp = setTimeout(mudaCor, 2000)
+            //window.addEventListener("load", mudaCor)
+        }
+
+        function parar() {
+            clearInterval(tmp)
+        }
+
+    </script>
+</body>
+</html>
