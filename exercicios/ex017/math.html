@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos e Constantes Matemáticas</title>
+</head>
+<body>
+    <h1>Métodos e Constantes Matemáticas</h1>
+    <script>
+
+        const pi = Math.PI.toFixed(2)
+        const eu = Math.E.toFixed(2)
+        const rq2 = Math.SQRT2.toFixed(2)
+        let mtabs = Math.abs(-10)
+        let mtceil = Math.ceil(10.3)
+        let mtfloor = Math.floor(10.8)
+        let mtround = Math.round(10.5)
+        let mtpow = Math.pow(5,3)
+        let mtsqrt = Math.sqrt(9)
+        let mtrandom = Math.round(Math.random()*(100-0)+0)
+        let mtcos = Math.cos(30*Math.PI/180)
+        let mtsin = Math.sin(30*Math.PI/180)
+        let mtmax = Math.max(1,10,8,94,46)
+        let mtmin = Math.min(1,10,8,94,46)
+
+        document.write(`Valor de PI: ${pi} <br>`)
+        document.write(`<br> Valor de Euler: ${eu} <br>`)
+        document.write(`<br> Valor da Raiz Quadrada de 2: ${rq2} <br>`)
+        document.write(`<br> Valor Absoluto de -10: ${mtabs} <br>`)
+        document.write(`<br> Valor Arredondado para Cima de 10.3: ${mtceil} <br>`)
+        document.write(`<br> Valor Arredondado para Baixo de 10.8: ${mtfloor} <br>`)
+        document.write(`<br> Valor Arredondado para o inteiro mais próximo de 10.5: ${mtround} <br>`)
+        document.write(`<br> Valor de 5 elevado a 3: ${mtpow} <br>`)
+        document.write(`<br> Valor da Raiz Quadrada de 9: ${mtsqrt} <br>`)
+        document.write(`<br> Número aleátorio entre 100 e 0: ${mtrandom} <br>`)
+        document.write(`<br> 5 Números Aleátorios entre 900 e 350: `)
+        for(i=0; i<=5; i++) {
+            document.write(Math.round(Math.random()*(900-350)+350)+"    ")
+        }
+        document.write(`<br><br> Cosseno de 30: ${mtcos} <br>`)
+        document.write(`<br> Seno de 30: ${mtsin} <br>`)
+        document.write(`<br> Maior Valor entre 1, 10, 8, 94 e 46: ${mtmax} <br>`)
+        document.write(`<br> Menor Valor entre 1, 10, 8, 94 e 46: ${mtmin} <br>`)
+
+    </script>
+</body>
+</html>
