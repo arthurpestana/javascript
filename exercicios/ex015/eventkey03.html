@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Keyboard Coop</title>
+    <style>
+        * {
+            padding: 0;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        #div01 {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            border: 1px solid black;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #div02 {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="div01"><h1>Arthur</h1></div>
+    <div id="div02"><h1>Christian</h1></div>
+    
+    <script>
+        
+        let dx1, dy1, px1, py1, vel1, obj1, tmp1, tecla1
+        let dx2, dy2, px2, py2, vel2, obj2, tmp2, tecla2
+
+        window.addEventListener("load", iniciar)
+
+        function iniciar() {
+            dx1=0, dy1=0, px1=0, py1=0, vel1=2
+            obj1 = document.querySelector("#div01")
+            tmp1 = setInterval(enterFrame1, 1)
+            document.addEventListener("keydown", teclaDw1)
+            document.addEventListener("keyup", teclaUp1)
+
+            dx2=0, dy2=0, px2=1820, py2=820, vel2=2
+            obj2 = document.querySelector("#div02")
+            tmp2 = setInterval(enterFrame2, 1)
+            document.addEventListener("keydown", teclaDw2)
+            document.addEventListener("keyup", teclaUp2)
+        }
+
+        function teclaDw1(event) {
+            tecla1 = event.keyCode
+            if (tecla1==37) {
+                dx1=-1
+            }
+            else if (tecla1==38) {
+                dy1=-1
+            }
+            else if (tecla1==39) {
+                dx1=1
+            }
+            else if (tecla1==40) {
+                dy1=1
+            }
+        }
+
+        function teclaUp1(event) {
+            tecla1 = event.keyCode
+            if (tecla1==37) {
+                dx1=0
+            }
+            else if (tecla1==38) {
+                dy1=0
+            }
+            else if (tecla1==39) {
+                dx1=0
+            }
+            else if (tecla1==40) {
+                dy1=0
+            }
+        }
+
+        function enterFrame1() {
+            px1+=dx1*vel1
+            py1+=dy1*vel1
+            obj1.style.left=px1+"px"
+            obj1.style.top=py1+"px"
+        }
+
+        function teclaDw2(event) {
+            tecla2 = event.keyCode
+            if (tecla2==65) {
+                dx2=-1
+            }
+            else if (tecla1==87) {
+                dy2=-1
+            }
+            else if (tecla1==68) {
+                dx2=1
+            }
+            else if (tecla1==83) {
+                dy2=1
+            }
+        }
+
+        function teclaUp2(event) {
+            tecla2 = event.keyCode
+            if (tecla2==65) {
+                dx2=0
+            }
+            else if (tecla2==87) {
+                dy2=0
+            }
+            else if (tecla2==68) {
+                dx2=0
+            }
+            else if (tecla2==83) {
+                dy2=0
+            }
+        }
+
+        function enterFrame2() {
+            px2+=dx2*vel2
+            py2+=dy2*vel2
+            obj2.style.left=px2+"px"
+            obj2.style.top=py2+"px"
+        }
+
+    </script>
+</body>
+</html>

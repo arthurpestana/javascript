@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Keyboard</title>
+    <style>
+        * {
+            padding: 0;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        #div1 {
+            height: 100px;
+            width: 100px;
+            /*background-color: red;*/
+            border: 1px solid black;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+
+        let px=0
+        let py=0
+        let obj = document.querySelector("div#div1")
+
+        /*addEventListener("keydown", function(event) {
+            let obj = document.querySelector("div#div1")
+            let key = event.keyCode
+            //Codes: 37=Esquerda    38=Cima    39=Direita    40=Baixo
+
+            if (key==37) {
+                px-=30
+                obj.style.left=px+"px"
+            }
+            else if (key==38) {
+                py-=30
+                obj.style.top=py+"px"
+            }
+            else if (key==39) {
+                px+=30
+                obj.style.left=px+"px"
+            }
+            else if (key==40) {
+                py+=30
+                obj.style.top=py+"px"
+            }
+        })*/
+        
+        obj.addEventListener("click", addEvent)
+        
+        function addEvent() {
+            alert("Evento Keydown Adicionado")
+            addEventListener("keydown", move)
+            obj.style.backgroundColor="red"
+        }
+
+        function move(event) {
+            let key = event.keyCode
+            //Codes: 37=Esquerda    38=Cima    39=Direita    40=Baixo // Enter=13
+
+            if (key==37) {
+                px-=30
+                obj.style.left=px+"px"
+            }
+            else if (key==38) {
+                py-=30
+                obj.style.top=py+"px"
+            }
+            else if (key==39) {
+                px+=30
+                obj.style.left=px+"px"
+            }
+            else if (key==40) {
+                py+=30
+                obj.style.top=py+"px"
+            }
+            else if (key==13) {
+                alert("Evento Keydown Removido!")
+                this.removeEventListener("keydown", move)
+                obj.style.backgroundColor="white"
+            }
+        }
+
+    </script>
+</body>
+</html>
