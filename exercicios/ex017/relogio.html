@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Digital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 98vh;
+        }
+        
+        #rel {
+            font-size: 3em;
+            color: rgb(83, 143, 5);
+            border: 3px solid rgb(83, 143, 5);
+            padding: 20px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 10px;
+            font-weight: 900;
+            background-color: black;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="rel">
+    <script>
+        let rel = document.querySelector("#rel")
+        setInterval(relogio, 1000)
+        function relogio() {
+            let date = new Date()
+            let hor = date.getHours()
+            let min = date.getMinutes()
+            let seg = date.getSeconds()
+
+            if (hor<10) {
+                hor="0"+hor
+            }
+            if (min<10) {
+                min="0"+min
+            }
+            if (seg<10) {
+                seg="0"+seg
+            }
+
+            let horas = `${hor}:${min}:${seg}`
+            rel.value = horas
+        }
+    </script>
+</body>
+</html>
