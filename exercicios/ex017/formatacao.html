@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatação Condicional</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table id="tabela">
+        <tr>
+            <th>Alunos</th>
+            <th>Nota 01</th>
+            <th>Nota 02</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>Al1</td>
+            <td>35</td>
+            <td>48</td>
+            <td id="n0"></td>
+        </tr>
+        <tr>
+            <td>Al2</td>
+            <td>20</td>
+            <td>15</td>
+            <td id="n1"></td>
+        </tr>
+        <tr>
+            <td>Al3</td>
+            <td>48</td>
+            <td>48</td>
+            <td id="n2"></td>
+        </tr>
+        <tr>
+            <td>Al4</td>
+            <td>10</td>
+            <td>50</td>
+            <td id="n3"></td>
+        </tr>
+    </table>
+
+    <script>
+        
+        let tabela = document.querySelector("#tabela")
+        let nota
+        /*for (let i=1; i<tabela.rows.length; i++) {
+            nota = Number(tabela.rows[i].cells[1].innerHTML) + Number(tabela.rows[i].cells[2].innerHTML)
+            tabela.rows[i].cells[3].innerHTML = nota
+        }*/
+
+
+        let n = new Array
+        for (let i=0; i<tabela.rows.length; i++) {
+            nota = Number(tabela.rows[i+1].cells[1].innerHTML) + Number(tabela.rows[i+1].cells[2].innerHTML)
+            tabela.rows[i+1].cells[3].innerHTML = nota
+            n[i] = document.querySelector("#n"+i)
+            if (n[i].innerHTML < 70) {
+                n[i].style.color = "red"
+                n[i].style.fontWeight = "bold"
+            }
+            else {
+                n[i].style.color = "green"
+                n[i].style.fontWeight = "bold"
+            }
+        }
+
+    </script>
+</body>
+</html>

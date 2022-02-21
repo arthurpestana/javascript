@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestAnimationFrame02</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 98vh;
+        }
+        #box {
+            border: 1px solid black;
+            background-color: #f00;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let ang=0, vel=16
+        let anima
+        let obj = document.querySelector("#box")
+        requestAnimationFrame(girar)
+        function girar() {
+            obj.style.transform="rotate("+ang+"deg)"
+            ang+=vel
+            if (ang>360) {
+                ang=0
+            }
+            anima = requestAnimationFrame(girar)
+        }
+    </script>
+</body>
+</html>
