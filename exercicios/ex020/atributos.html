@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atributos HTML em JS</title>
+    <style>
+        #bloco {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        .c1 {
+            background-color: red;
+        }
+
+        .c2 {
+            background-color: blue;
+        }
+
+        .c3 {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="trocaCor(1)">Cor 1</button>
+    <button onclick="trocaCor(2)">Cor 2</button>
+    <button onclick="trocaCor(3)">Cor 3</button>
+    <button onclick="removerCor()">Remover Cor</button>
+    <button onclick="verifica()">Verifica</button>
+    <div id="bloco"></div>
+
+    <script>
+        let bloco = document.querySelector("#bloco")
+        function trocaCor(c) {
+            if (c==1) {
+                bloco.setAttribute("class", "c1")
+            }
+            else if (c==2) {
+                bloco.setAttribute("class", "c2")
+            }
+            else if (c==3) {
+                bloco.setAttribute("class", "c3")
+            }
+        }
+
+        function removerCor() {
+            bloco.removeAttribute("class")
+        }
+
+        function verifica() {
+            if (bloco.hasAttribute("class")) {
+                alert("O bloco possui uma classe!")
+            }
+            else {
+                alert("O bloco não possui uma classe!")
+            }
+        }
+    </script>
+</body>
+</html>
