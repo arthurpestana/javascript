@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider com JavaScript</title>
+    <style>
+        .slider {
+            width: 1000px;
+            height: 300px;
+            border: 1px solid black;
+            background-size: cover;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .button {
+            background-color: rgba(0, 0, 0, 0.39);
+            width: 50px;
+            height: 30%;
+            color: white;
+            cursor: pointer;
+            outline: none;
+            margin: 10px;
+        }
+
+        .divload {
+            width: 100%;
+            margin: 25% 0px 0px 0px;
+            height: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.301);
+        }
+
+        .barra {
+            width: 0%;
+            height: 100%;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <button class="button" onclick="troca(-1)"><--</button>
+        <div class="divload">
+            <div class="barra"></div>
+        </div>
+        <button class="button" onclick="troca(1)">--></button>
+    </div>
+
+    <script>
+        let imgs = new Array
+        let slider, maxImg, imgAtual, tmp, vtempo, vbarra, tempoTroca
+        window.addEventListener("load", inicia)
+
+        function inicia() {
+            preLoad()
+            slider = document.querySelector(".slider")
+            maxImg = imgs.length-1
+            imgAtual=0
+            vbarra = document.querySelector(".barra")
+            imgLoad(imgAtual)
+            tempoTroca = 0
+            anima()
+        }
+
+        function preLoad() {
+            s=1
+            for (let i=0; i<4; i++) {
+                imgs[i] = new Image()
+                imgs[i].src = `imgs/s${s}.jpg`
+                s++
+            }
+        }
+
+        function imgLoad(img) {
+            slider.style.backgroundImage = "url('"+imgs[img].src+"')"
+        }
+
+        function troca(dir) {
+            tempoTroca=0
+            imgAtual+=dir
+            if (imgAtual>maxImg) {
+                imgAtual=0
+            }
+            else if (imgAtual<0) {
+                imgAtual=maxImg
+            }
+            imgLoad(imgAtual)
+        }
+
+
+        function anima() {
+            tempoTroca++
+            if (tempoTroca>=500) {
+                tempoTroca=0
+                troca(1)
+            }
+            vtempo = tempoTroca/5
+            vbarra.style.width = vtempo+"%"
+            requestAnimationFrame(anima)
+        }
+    </script>
+</body>
+</html>
