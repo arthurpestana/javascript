@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Match</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <p class="txt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, nostrum incidunt doloremque reiciendis sapiente nesciunt, corrupti quae porro doloribus facere repellendus aspernatur ratione ab expedita id ea adipisci dolor officiis!</p>
+
+    <script>
+        let txt = document.querySelector(".txt").innerHTML
+        let resul = txt.match(/\w/ig)
+        document.write(`${resul.length} <br>`)
+        for (let i=0; i<resul.length; i++) {
+            document.write(` ${resul[i]},`)
+        }
+    </script>
+</body>
+</html>
