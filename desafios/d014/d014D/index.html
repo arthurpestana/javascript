@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D014-D</title>
+</head>
+<body>
+    <input type="number" name="num" id="num">
+    <input type="button" value="Mostrar Quadrado" id="button">
+
+    <script>
+        let button = document.querySelector("#button").addEventListener("click", potencia)
+        
+        function potencia() {
+            let number = document.querySelector("#num")
+            if (number.value == 0) {
+                alert("Digite um número válido!")
+            }
+            else {
+                number = Number(number.value)
+                alert(`O número ${number} ao quadrado é ${number**2}`)
+            }
+        }
+    </script>
+</body>
+</html>
