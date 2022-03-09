@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D014-E</title>
+</head>
+<body>
+    <input type="number" name="tnum" id="tnum">
+    <input type="button" value="Verificar Idade" id="button">
+    <script>
+        let button = document.querySelector("#button").addEventListener("click", verifIdade)
+        function verifIdade() {
+            let num = Number(document.querySelector("#tnum").value)
+            if (num<=0) {
+                alert("Digite uma idade válida!")
+            }
+            else if (num<18) {
+                alert("Você é menor de idade!")
+            }
+            else {
+                alert("Você é maior de idade!")
+            }
+        }
+    </script>
+</body>
+</html>
