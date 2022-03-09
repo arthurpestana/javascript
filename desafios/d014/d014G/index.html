@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D014-G</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <input type="number" name="visor" class="visor" readonly>
+        <table class="calc">
+            <tr>
+                <td><button onclick="btn01()">1</button></td>
+                <td><button onclick="btn02()">2</button></td>
+                <td><button onclick="btn03()">3</button></td>
+                <td><button onclick="btnLimpar()">Limpar</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="btn04()">4</button></td>
+                <td><button onclick="btn05()">5</button></td>
+                <td><button onclick="btn06()">6</button></td>
+                <td><button onclick="btnSomar()">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="btn07()">7</button></td>
+                <td><button onclick="btn08()">8</button></td>
+                <td><button onclick="btn09()">9</button></td>
+                <td><button onclick="btnSubtrair()">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="btn00()">0</button></td>
+                <td><button onclick="btnDividir()">/</button></td>
+                <td><button onclick="btnMulti()">*</button></td>
+                <td><button onclick="btnResul()">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
