@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D014-B</title>
+</head>
+<body>
+    <input type="number" name="tnum1" id="tnum1">
+    <input type="number" name="tnum2" id="tnum2">
+    <input type="button" value="+" id="add" onclick="somar()">
+    <input type="button" value="-" id="sub" onclick="subtrair()">
+    <script>
+        let tnum01 = document.querySelector("#tnum1")
+        let tnum02 = document.querySelector("#tnum2")
+        function somar() {
+            if (tnum01.value == "" || tnum02.value == "") {
+                alert("[ERROR!] Por favor, verifique os dados e tente novamente.")
+            }
+            else {
+                num01 = Number(tnum01.value)
+                num02 = Number(tnum02.value)
+                alert(`A soma entre os dois valores é: ${num01+num02}`)
+            }
+        }
+        function subtrair() {
+            if (tnum01.value == "" || tnum02.value == "") {
+                alert("[ERROR!] Por favor, verifique os dados e tente novamente.")
+            }
+            else {
+                num01 = Number(tnum01.value)
+                num02 = Number(tnum02.value)
+                alert(`A subtração entre os dois valores é: ${num01-num02}`)
+            }
+        }
+    </script>
+</body>
+</html>
