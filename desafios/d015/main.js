@@ -1,5 +1,5 @@
-let btnNum = document.getElementsByClassName("btnNum")
-let btnAction = document.getElementsByClassName("btnAction")
+let btnNum = document.getElementsByClassName("calc__btnNum")
+let btnAction = document.getElementsByClassName("calc__btnAction")
 
 for (let i=0; i<=9; i++) {
     btnNum[i].onclick = numAdd
@@ -9,20 +9,17 @@ for (let i=0; i<=5; i++) {
     btnAction[i].onclick = addAction
 }
 
-let acao = ""
-let visor = ""
-let valorAntigo = ""
+let visor = document.querySelector(".calc__visor")
 
-function numAdd() {
-    if (btnNum.value=="1") {
-        alert("Number 01")
-    }
+function numAdd(num) {
+    let digito = num.target.value
+    visor.value += digito
 }
 
-function addAction() {
-
+function addAction(act) {
+    let acao = act.target.value
+    playOperation(acao)
 }
-
 
 /*let visor = document.querySelector("input.visor")
 let numbers = new Array()

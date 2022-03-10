@@ -4,38 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D014-G</title>
+    <title>D015 - Calculator APP - FrontEnd Mentor</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="calculator-app-main/images/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
     <div class="container">
-        <input type="number" name="visor" class="visor" readonly>
-        <table class="calc">
-            <tr>
-                <td><button class="btnNum" value="1">1</button></td>
-                <td><button class="btnNum" value="2">2</button></td>
-                <td><button class="btnNum" value="3">3</button></td>
-                <td><button class="btnAction" value="l">Limpar</button></td>
-            </tr>
-            <tr>
-                <td><button class="btnNum" value="4">4</button></td>
-                <td><button class="btnNum" value="5">5</button></td>
-                <td><button class="btnNum" value="6">6</button></td>
-                <td><button class="btnAction" value="+">+</button></td>
-            </tr>
-            <tr>
-                <td><button class="btnNum" value="7">7</button></td>
-                <td><button class="btnNum" value="8">8</button></td>
-                <td><button class="btnNum" value="9">9</button></td>
-                <td><button class="btnAction" value="-">-</button></td>
-            </tr>
-            <tr>
-                <td><button class="btnNum" value="0">0</button></td>
-                <td><button class="btnAction" value="/">/</button></td>
-                <td><button class="btnAction" value="*">*</button></td>
-                <td><button class="btnAction" value="=">=</button></td>
-            </tr>
-        </table>
+        <div class="calc">
+            <div class="calc__menu">
+                <p>calc</p>
+                <div class="calc__themes">
+                    <p>THEME</p>
+                    <div class="calc_themes--options">
+                        <p>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                        <input type="radio" value="1" name="theme" class="themes" id="theme1">
+                        <input type="radio" value="2" name="theme" class="themes" id="theme2">
+                        <input type="radio" value="3" name="theme" class="themes" id="theme3">
+                    </div>
+                </div>
+            </div>
+            <div class="calc__display">
+                <input type="number" name="visor" class="calc__visor" readonly>
+                <table class="calc__buttons">
+                    <tr>
+                        <td><button class="calc__btnNum" value="1">1</button></td>
+                        <td><button class="calc__btnNum" value="2">2</button></td>
+                        <td><button class="calc__btnNum" value="3">3</button></td>
+                        <td><button class="calc__btnAction" id="calc__btnDelete" value="d">DEL</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc__btnNum" value="4">4</button></td>
+                        <td><button class="calc__btnNum" value="5">5</button></td>
+                        <td><button class="calc__btnNum" value="6">6</button></td>
+                        <td><button class="calc__btnAction" value="+">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc__btnNum" value="7">7</button></td>
+                        <td><button class="calc__btnNum" value="8">8</button></td>
+                        <td><button class="calc__btnNum" value="9">9</button></td>
+                        <td><button class="calc__btnAction" value="-">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="calc__btnAction" value=".">.</button></td>
+                        <td><button class="calc__btnNum" value="0">0</button></td>
+                        <td><button class="calc__btnAction" value="/">/</button></td>
+                        <td><button class="calc__btnAction" value="x">x</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button class="calc__btnAction" id="calc__btnReset" value="c">RESET</button></td>
+                        <td colspan="2"><button class="calc__btnAction" id="calc__btnIgual" value="=">=</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
