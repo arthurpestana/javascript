@@ -1,3 +1,16 @@
+//THEMES
+let theme = document.querySelector(".themes__input").addEventListener("click", themeChooser)
+let html = document.querySelector("html")
+let themesNum = 1
+
+function themeChooser() {
+    if (themesNum==1) {
+        themesNum = 2
+        html.classList.toggle("theme02")
+    }
+}
+
+//CALCULATOR
 let btnNum = document.getElementsByClassName("calc__btnNum")
 let btnAction = document.getElementsByClassName("calc__btnAction")
 
