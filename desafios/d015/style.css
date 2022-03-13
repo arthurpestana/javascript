@@ -12,40 +12,72 @@
     --font-main: 'Spartan', sans-serif;
     --font-white: white;
 
-    /*Tema 01*/
+    
+    --font-menu: ;
+    --background: ;
+    --visor-back: ;
+    --toggle-back: ;
+    --numpad-back: ;
+    --font-button: ;
+    --key-background1: ;
+    --key-shadow1: ;
+    --key-background2: ;
+    --key-shadow2: ;
+    --key-toggle: ;
+    --key-toggle-shadow: ;
+    --key-toggle-color: ;
+    --position-input: ;
+}
+
+.theme01:root {
+    --font-menu: white;
     --background: hsl(222, 26%, 31%);
     --visor-back: hsl(224, 36%, 15%);
+    --toggle-back: hsl(223, 31%, 20%);
     --numpad-back: hsl(223, 31%, 20%);
-    --font-visor: hsl(221, 14%, 31%);
-    --key-background: hsl(225, 21%, 49%);
-    --key-shadow: hsl(224, 28%, 35%);
-    
+    --font-button: hsl(221, 14%, 31%);
+    --key-background1: hsl(30, 25%, 89%);
+    --key-shadow1: hsl(28, 16%, 65%);
+    --key-background2: hsl(225, 21%, 49%);
+    --key-shadow2: hsl(224, 28%, 35%);
     --key-toggle: hsl(6, 63%, 50%);
     --key-toggle-shadow: hsl(6, 70%, 34%);
+    --key-toggle-color: white;
     --position-input: 0px;
 }
 
+
 .theme02:root {
+    --font-menu: hsl(60, 10%, 19%);
     --background: hsl(0, 0%, 90%);
     --visor-back: hsl(0, 0%, 93%);
+    --toggle-back: hsl(0, 5%, 81%);
     --numpad-back: hsl(0, 5%, 81%);
-    --font-visor: hsl(60, 10%, 19%); 
-    --key-background: hsl(185, 42%, 37%);
-    --key-shadow: hsl(185, 58%, 25%);
+    --font-button: hsl(60, 10%, 19%);
+    --key-background1: hsl(45, 7%, 89%);
+    --key-shadow1: hsl(35, 11%, 61%);
+    --key-background2: hsl(185, 42%, 37%);
+    --key-shadow2: hsl(185, 58%, 25%);
     --key-toggle: hsl(25, 98%, 40%);
     --key-toggle-shadow: hsl(25, 99%, 27%);
+    --key-toggle-color: white;
     --position-input: 21px;
 }
 
 .theme03:root {
+    --font-menu: hsl(52, 100%, 62%);
     --background: hsl(268, 75%, 9%);
     --visor-back: hsl(268, 71%, 12%);
+    --toggle-back: hsl(268, 71%, 12%);
     --numpad-back: hsl(268, 71%, 12%);
-    --font-visor: hsl(52, 100%, 62%);
-    --key-background: hsl(281, 89%, 26%);
-    --key-shadow: hsl(285, 91%, 52%);
+    --font-button: hsl(52, 100%, 62%);
+    --key-background1: hsl(268, 47%, 21%);
+    --key-shadow1: hsl(290, 70%, 36%);
+    --key-background2: hsl(281, 89%, 26%);
+    --key-shadow2: hsl(285, 91%, 52%);
     --key-toggle: hsl(176, 100%, 44%);
     --key-toggle-shadow: hsl(177, 92%, 70%);
+    --key-toggle-color: hsl(198, 20%, 13%);
     --position-input: 44px;
 }
 
@@ -62,7 +94,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--font-white);
+    color: var(--font-menu);
     font-size: 1.8em;
 }
 
@@ -90,11 +122,10 @@
     display: flex;
     align-items: center;
     position: relative;
-    cursor: pointer;
     width: 70px;
     height: 25px;
     border-radius: 20px;
-    background-color: var(--visor-back);
+    background-color: var(--toggle-back);
 }
 
 .themes__input {
@@ -106,6 +137,7 @@
     background-color: var(--key-toggle);
     left: var(--position-input);
     transition: left 0.3s;
+    cursor: pointer;
 }
 
 .calc__visor {
@@ -116,7 +148,7 @@
     border: 0px;
     border-radius: 10px;
     margin: 20px 0px;
-    color: var(--font-white);
+    color: var(--font-menu);
     padding: 20px 5px 20px 20px;
     text-align: right;
 }
@@ -139,10 +171,12 @@
     font-size: 1.5em;
     height: 50px;
     width: 80px;
-    box-shadow: 0px 3px 0px 0px #ffffff71;
+    box-shadow: 0px 3px 0px 0px var(--key-shadow1);
+    background-color: var(--key-background1);
     padding: 5px 0px 0px 0px;
     border-radius: 10px;
-    color: var(--font-visor);
+    color: var(--font-button);
+    cursor: pointer;
 }
 
 .calc__buttons button:hover {
@@ -150,15 +184,15 @@
 }
 
 .calc__buttons button:focus {
-    box-shadow: 0px -3px 0px 0px #ffffff71;
+    box-shadow: 0px -3px 0px 0px var(--key-shadow1);
     transition: 0.2s;
 }
 
 #calc__btnReset, #calc__btnDelete {
     font-size: 0.9em;
     color: var(--font-white);
-    background-color: var(--key-background);
-    box-shadow: 0px 3px 0px 0px var(--key-shadow);
+    background-color: var(--key-background2);
+    box-shadow: 0px 3px 0px 0px var(--key-shadow2);
 }
 
 #calc__btnReset {
@@ -167,14 +201,14 @@
 
 #calc__btnIgual {
     font-size: 0.9em;
-    color: var(--font-white);
+    color: var(--key-toggle-color);
     width: 186px;
     background-color: var(--key-toggle);
     box-shadow: 0px 3px 0px 0px var(--key-toggle-shadow);
 }
 
 #calc__btnReset:focus, #calc__btnDelete:focus {
-    box-shadow: 0px -3px 0px 0px var(--key-shadow);
+    box-shadow: 0px -3px 0px 0px var(--key-shadow2);
     transition: 0.2s;
 }
 

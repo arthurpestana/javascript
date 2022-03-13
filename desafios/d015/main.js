@@ -1,12 +1,24 @@
 //THEMES
 let theme = document.querySelector(".themes__input").addEventListener("click", themeChooser)
 let html = document.querySelector("html")
+html.classList.toggle("theme01")
 let themesNum = 1
 
 function themeChooser() {
     if (themesNum==1) {
         themesNum = 2
+        html.classList.remove("theme01")
         html.classList.toggle("theme02")
+    }
+    else if (themesNum==2) {
+        themesNum = 3
+        html.classList.remove("theme02")
+        html.classList.toggle("theme03")
+    }
+    else {
+        themesNum = 1
+        html.classList.remove("theme03")
+        html.classList.toggle("theme01")
     }
 }
 
