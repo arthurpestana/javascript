@@ -30,20 +30,92 @@ for (let i=0; i<=9; i++) {
     btnNum[i].onclick = numAdd
 }
 
-for (let i=0; i<=5; i++) {
+for (let i=0; i<=7; i++) {
     btnAction[i].onclick = addAction
 }
 
 let visor = document.querySelector(".calc__visor")
+let numpart = new Array
+let digito = new Array
+let point = 0
+let symbol = 0
 
 function numAdd(num) {
-    let digito = num.target.value
-    visor.value += digito
+    symbol = 0
+    let numbers = num.target.value
+    digito.push(numbers)
+    visor.value += numbers
 }
 
-function addAction(act) {
-    let acao = act.target.value
+function addAction(event) {
+    let acao = event.target.value
     playOperation(acao)
+}
+
+function playOperation(acao) {
+    if (acao==".") {
+        if (digito.length==0) {
+            digito.push("0")
+            digito.push(".")
+            visor.value += "0,"
+            point = 1
+        }
+        else if (point==1) {
+            
+        }
+        else {
+            digito.push(".")
+            visor.value += ","
+            point = 1
+        }
+    }
+    else if (acao=="d") {
+        digito.pop()
+        visor.value = digito.join("")
+    }
+    else if (acao=="+") {
+        if (visor.value=="") {
+            numpart.push(0)
+            visor.value += "0+"
+            digito = []
+            symbol = 1
+            point = 0
+        }
+        else if (digito.lastIndexOf()==",") {
+            visor.value = ""
+        }
+        else if (symbol==1) {
+
+        }
+        else {
+            numpart.push(digito.join(""))
+            visor.value += "+"
+            digito = []
+            symbol = 1
+            point = 0
+        }
+        
+    }
+    else if (acao=="-") {
+        numpart.push(digito.join(""))
+        visor.value += "-"
+        digito = []
+    }
+    else if (acao=="*") {
+        numpart.push(digito.join(""))
+        visor.value += "x"
+        digito = []
+    }
+    else if (acao=="/") {
+        numpart.push(digito.join(""))
+        visor.value += "/"
+        digito = []
+    }
+    else if (acao=="c") {
+        visor.value = ""
+        digito = []
+        numpart = []
+    }
 }
 
 /*let visor = document.querySelector("input.visor")
