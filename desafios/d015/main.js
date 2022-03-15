@@ -59,6 +59,7 @@ function playOperation(acao) {
             digito.push(".")
             visor.value += "0,"
             point = 1
+            symbol = 1
         }
         else if (point==1) {
             
@@ -73,48 +74,42 @@ function playOperation(acao) {
         digito.pop()
         visor.value = digito.join("")
     }
-    else if (acao=="+") {
-        if (visor.value=="") {
-            numpart.push(0)
-            visor.value += "0+"
-            digito = []
-            symbol = 1
-            point = 0
-        }
-        else if (digito.lastIndexOf()==",") {
-            visor.value = ""
-        }
-        else if (symbol==1) {
-
-        }
-        else {
-            numpart.push(digito.join(""))
-            visor.value += "+"
-            digito = []
-            symbol = 1
-            point = 0
-        }
-        
+    else if (acao=="+") {  
+        verificaVisor(acao)
     }
     else if (acao=="-") {
-        numpart.push(digito.join(""))
-        visor.value += "-"
-        digito = []
+        verificaVisor(acao)
     }
     else if (acao=="*") {
-        numpart.push(digito.join(""))
-        visor.value += "x"
-        digito = []
+        verificaVisor(acao)
     }
     else if (acao=="/") {
-        numpart.push(digito.join(""))
-        visor.value += "/"
-        digito = []
+        verificaVisor(acao)
     }
     else if (acao=="c") {
         visor.value = ""
         digito = []
         numpart = []
+    }
+}
+
+function verificaVisor(opera) {
+    if (visor.value=="") {
+        numpart.push(0)
+        visor.value += `0${opera}`
+        digito = []
+        symbol = 1
+        point = 0
+    }
+    else if (symbol==1) {
+
+    }
+    else {
+        numpart.push(digito.join(""))
+        visor.value += `${opera}`
+        digito = []
+        symbol = 1
+        point = 0
     }
 }
 
