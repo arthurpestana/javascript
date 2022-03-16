@@ -37,13 +37,24 @@ for (let i=0; i<=7; i++) {
 let visor = document.querySelector(".calc__visor")
 let numpart = new Array
 let digito = new Array
+let operador = new Array
+let visorInfo = new Array
 let point = 0
 let symbol = 0
+let resul = 0
+let resAtivo = false
 
 function numAdd(num) {
+    if (resAtivo) {
+        visor.value = ""
+        digito = []
+        numpart = []
+        resAtivo = false
+    }
     symbol = 0
     let numbers = num.target.value
-    digito.push(numbers)
+    digito.push(Number(numbers))
+    visorInfo.push(digito[digito.length-1])
     visor.value += numbers
 }
 
@@ -57,6 +68,8 @@ function playOperation(acao) {
         if (digito.length==0) {
             digito.push("0")
             digito.push(".")
+            visorInfo.push("0")
+            visorInfo.push(".")
             visor.value += "0,"
             point = 1
             symbol = 1
@@ -66,6 +79,7 @@ function playOperation(acao) {
         }
         else {
             digito.push(".")
+            visorInfo.push(digito[digito.length-1])
             visor.value += ","
             point = 1
         }
@@ -73,6 +87,8 @@ function playOperation(acao) {
     else if (acao=="d") {
         digito.pop()
         visor.value = digito.join("")
+        numpart = []
+        
     }
     else if (acao=="+") {  
         verificaVisor(acao)
@@ -91,202 +107,60 @@ function playOperation(acao) {
         digito = []
         numpart = []
     }
+    else if (acao=="=") {
+        visor.value = "="
+        numpart.push(Number(digito.join("")))
+        for (let i=0; i<=numpart.length; i++) {
+            if (i==0) {
+                resul = 0
+                resul = numpart[i]
+            }
+            else {
+                if (operador[i-1]=="+") {
+                    resul += numpart[i]
+                }
+                else if (operador[i-1]=="-") {
+                    resul -= numpart[i]
+                }
+                else if (operador[i-1]=="*") {
+                    resul *= numpart[i]
+                }
+                else if (operador[i-1]=="/") {
+                    resul /= numpart[i]
+                }
+            }
+        }
+        visor.value += resul
+        resAtivo = true
+        digito = []
+        numpart = []
+        operador = []
+        digito.push(resul)
+    }
 }
 
 function verificaVisor(opera) {
     if (visor.value=="") {
+        resAtivo = false
         numpart.push(0)
         visor.value += `0${opera}`
         digito = []
         symbol = 1
         point = 0
+        operador.push(`${opera}`)
+        visorInfo.push(operador[operador.length-1])
     }
     else if (symbol==1) {
 
     }
     else {
-        numpart.push(digito.join(""))
+        resAtivo = false
+        numpart.push(Number(digito.join("")))
         visor.value += `${opera}`
         digito = []
         symbol = 1
         point = 0
+        operador.push(`${opera}`)
+        visorInfo.push(operador[operador.length-1])
     }
 }
-
-/*let visor = document.querySelector("input.visor")
-let numbers = new Array()
-let numpart = new Array()
-let operador = new Array()
-let resul = 0
-let resAtivo = false
-
-function btn01() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(1)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn02() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(2)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn03() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(3)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn04() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(4)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn05() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(5)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn06() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(6)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn07() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(7)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn08() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(8)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn09() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(9)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btn00() {
-    if (resAtivo) {
-        visor.value = ""
-        numbers = []
-        resAtivo = false
-    }
-    numbers.push(0)
-    visor.value += numbers[numbers.length-1]
-}
-
-function btnSomar() {
-    resAtivo = false
-    visor.value = ""
-    numpart.push(Number(numbers.join("")))
-    operador.push("+")
-    numbers = []
-}
-
-function btnSubtrair() {
-    resAtivo = false
-    visor.value = ""
-    numpart.push(Number(numbers.join("")))
-    operador.push("-")
-    numbers = []
-}
-
-function btnDividir() {
-    resAtivo = false
-    visor.value = ""
-    numpart.push(Number(numbers.join("")))
-    operador.push("/")
-    numbers = []
-}
-
-function btnMulti() {
-    resAtivo = false
-    visor.value = ""
-    numpart.push(Number(numbers.join("")))
-    operador.push("*")
-    numbers = []
-}
-
-function btnLimpar() {
-    location.reload()
-}
-
-function btnResul() {
-    visor.value = ""
-    numpart.push(Number(numbers.join("")))
-
-    //Próximo passo é fazer um loop for com o número de índices do numpart, em seguida fazer uma verificação com o if para analisar se é necessário colocar o operador agora ou não, em caso de precisar do operador haverá outra condição para analisar qual o operador do índice atual, + - / *, e então fazer a operação com o resultado já obtido antes de usar o operador. Quando o índice do laço chegar em -2 do numpart.length não será mais necessário analisar qual é o operador, já que é o ultimo número antes de obter o resultado completo.
-
-    for (let i=0; i<=numpart.length-1; i++) {
-        if (i==0) {
-            resul = 0
-            resul = numpart[i]
-        }
-        else {
-            if (operador[i-1]=="+") {
-                resul += numpart[i]
-            }
-            else if (operador[i-1]=="-") {
-                resul -= numpart[i]
-            }
-            else if (operador[i-1]=="*") {
-                resul *= numpart[i]
-            }
-            else if (operador[i-1]=="/") {
-                resul /= numpart[i]
-            }
-        }
-    }
-    visor.value = parseFloat(resul.toFixed(8)).toString().replace(",", ".")
-    resAtivo = true
-    numpart = []
-    numbers = []
-    operador = []
-    numbers.push(resul)
-    resul = 0
-}*/
