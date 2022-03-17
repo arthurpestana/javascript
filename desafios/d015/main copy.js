@@ -38,7 +38,6 @@ let visor = document.querySelector(".calc__visor")
 let numpart = new Array
 let digito = new Array
 let operador = new Array
-let visorInfo = new Array
 let point = 0
 let symbol = 0
 let resul = 0
@@ -54,7 +53,6 @@ function numAdd(num) {
     symbol = 0
     let numbers = num.target.value
     digito.push(Number(numbers))
-    visorInfo.push(digito[digito.length-1])
     visor.value += numbers
 }
 
@@ -65,11 +63,9 @@ function addAction(event) {
 
 function playOperation(acao) {
     if (acao==".") {
-        if (visorInfo==0) {
+        if (digito.length==0) {
             digito.push("0")
             digito.push(".")
-            visorInfo.push("0")
-            visorInfo.push(".")
             visor.value += "0,"
             point = 1
             symbol = 1
@@ -85,14 +81,10 @@ function playOperation(acao) {
         }
     }
     else if (acao=="d") {
-        visorInfo.pop()
-        visor.value = visorInfo.join("")
-        if (isNaN(visorInfo[visorInfo.length-1])) {
-            symbol = 1
-        }
-        else {
-            symbol = 0
-        }
+        digito.pop()
+        visor.value = digito.join("")
+        numpart = []
+        operador = []
     }
     else if (acao=="+") {  
         verificaVisor(acao)
@@ -112,22 +104,8 @@ function playOperation(acao) {
         numpart = []
     }
     else if (acao=="=") {
-        numpart = []
-        operador = []
-        digito = []
         visor.value = "="
-        for (let i=0; i<=visorInfo.length-1; i++) {
-            if (visorInfo[i]=="+" || visorInfo[i]=="-" || visorInfo[i]=="*" || visorInfo[i]=="/") {
-                numpart.push(Number(digito.join("")))
-                operador.push(visorInfo[i])
-                digito = []
-            }
-            else {
-                digito.push(visorInfo[i])
-            }
-        }
         numpart.push(Number(digito.join("")))
-        
         for (let i=0; i<=numpart.length; i++) {
             if (i==0) {
                 resul = 0
@@ -153,8 +131,7 @@ function playOperation(acao) {
         digito = []
         numpart = []
         operador = []
-        visorInfo = []
-        visorInfo.push(resul)
+        digito.push(resul)
     }
 }
 
@@ -167,8 +144,6 @@ function verificaVisor(opera) {
         symbol = 1
         point = 0
         operador.push(`${opera}`)
-        visorInfo.push(0)
-        visorInfo.push(operador[operador.length-1])
     }
     else if (symbol==1) {
 
@@ -181,6 +156,5 @@ function verificaVisor(opera) {
         symbol = 1
         point = 0
         operador.push(`${opera}`)
-        visorInfo.push(operador[operador.length-1])
     }
 }
