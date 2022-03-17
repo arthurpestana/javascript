@@ -49,6 +49,7 @@ function numAdd(num) {
         visor.value = ""
         digito = []
         numpart = []
+        visorInfo = []
         resAtivo = false
     }
     symbol = 0
@@ -65,9 +66,7 @@ function addAction(event) {
 
 function playOperation(acao) {
     if (acao==".") {
-        if (visorInfo==0) {
-            digito.push("0")
-            digito.push(".")
+        if (visorInfo==0 || symbol==1) {
             visorInfo.push("0")
             visorInfo.push(".")
             visor.value += "0,"
@@ -78,8 +77,8 @@ function playOperation(acao) {
             
         }
         else {
-            digito.push(".")
-            visorInfo.push(digito[digito.length-1])
+            resAtivo = false
+            visorInfo.push(".")
             visor.value += ","
             point = 1
         }
@@ -108,8 +107,10 @@ function playOperation(acao) {
     }
     else if (acao=="c") {
         visor.value = ""
+        visorInfo = []
         digito = []
         numpart = []
+        operador = []
     }
     else if (acao=="=") {
         numpart = []
@@ -161,26 +162,20 @@ function playOperation(acao) {
 function verificaVisor(opera) {
     if (visor.value=="") {
         resAtivo = false
-        numpart.push(0)
         visor.value += `0${opera}`
-        digito = []
         symbol = 1
         point = 0
-        operador.push(`${opera}`)
         visorInfo.push(0)
-        visorInfo.push(operador[operador.length-1])
+        visorInfo.push(`${opera}`)
     }
     else if (symbol==1) {
 
     }
     else {
         resAtivo = false
-        numpart.push(Number(digito.join("")))
         visor.value += `${opera}`
-        digito = []
         symbol = 1
         point = 0
-        operador.push(`${opera}`)
-        visorInfo.push(operador[operador.length-1])
+        visorInfo.push(`${opera}`)
     }
 }
