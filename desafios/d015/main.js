@@ -66,7 +66,7 @@ function addAction(event) {
 
 function playOperation(acao) {
     if (acao==".") {
-        if (visorInfo==0 || symbol==1) {
+        if (point==0) {
             visorInfo.push("0")
             visorInfo.push(".")
             visor.value += "0,"
