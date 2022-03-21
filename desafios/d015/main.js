@@ -35,28 +35,21 @@ for (let i=0; i<=7; i++) {
 }
 
 let visor = document.querySelector(".calc__visor")
-let numpart = new Array
-let digito = new Array
-let operador = new Array
 let visorInfo = new Array
 let point = 0
 let symbol = 0
 let resul = 0
-let posi
 let resAtivo = false
 
 function numAdd(num) {
     if (resAtivo) {
         visor.value = ""
-        digito = []
-        numpart = []
         visorInfo = []
         resAtivo = false
     }
     symbol = 0
     let numbers = num.target.value
-    digito.push(Number(numbers))
-    visorInfo.push(digito[digito.length-1])
+    visorInfo.push(Number(numbers))
     visor.value += numbers
 }
 
@@ -67,7 +60,7 @@ function addAction(event) {
 
 function playOperation(acao) {
     if (acao==".") {
-        if (point==0) {
+        if (visor.value=="" || symbol==1) {
             visorInfo.push("0")
             visorInfo.push(".")
             visor.value += "0,"
@@ -109,82 +102,12 @@ function playOperation(acao) {
     else if (acao=="c") {
         visor.value = ""
         visorInfo = []
-        digito = []
-        numpart = []
-        operador = []
     }
     else if (acao=="=") {
-        numpart = []
-        operador = []
-        digito = []
         visor.value = "="
-        for (let i=0; i<=visorInfo.length-1; i++) {
-            if (visorInfo[i]=="+" || visorInfo[i]=="-" || visorInfo[i]=="*" || visorInfo[i]=="/") {
-                numpart.push(Number(digito.join("")))
-                operador.push(visorInfo[i])
-                digito = []
-            }
-            else {
-                digito.push(visorInfo[i])
-            }
-        }
-        numpart.push(Number(digito.join("")))
-        
-        /*for (let i=0; i<=numpart.length; i++) {
-            if (i==0) {
-                resul = 0
-                resul = numpart[i]
-            }
-            else {
-                if (operador[i-1]=="+") {
-                    resul += numpart[i]
-                }
-                else if (operador[i-1]=="-") {
-                    resul -= numpart[i]
-                }
-                else if (operador[i-1]=="*") {
-                    resul *= numpart[i]
-                }
-                else if (operador[i-1]=="/") {
-                    resul /= numpart[i]
-                }
-            }
-        }*/
-        if (operador.indexOf("*")!=-1) {
-            if (resAtivo) {
-                resul *= numpart[operador.indexOf("*")+1]
-                operador.splice(operador.indexOf("*"), 1)
-                numpart.splice(operador.indexOf("*"), 1)
-                numpart.splice(operador.indexOf("*")+1, 1)
-            }
-            else {
-                resul = numpart[operador.indexOf("*")]
-                resul *= numpart[operador.indexOf("*")+1]
-                operador.splice(operador.indexOf("*"), 1)
-                numpart.splice(operador.indexOf("*"), 1)
-                numpart.splice(operador.indexOf("*")+1, 1)
-            }
-        }
-        if (operador.indexOf("/")!=-1) {
-            if (resAtivo) {
-                resul /= numpart[operador.indexOf("/")+1]
-                operador.splice(operador.indexOf("/"), 1)
-                numpart.splice(operador.indexOf("/"), 1)
-                numpart.splice(operador.indexOf("/")+1, 1)
-            }
-            else {
-                resul = numpart[operador.indexOf("/")]
-                resul /= numpart[operador.indexOf("/")+1]
-                operador.splice(operador.indexOf("/"), 1)
-                numpart.splice(operador.indexOf("/"), 1)
-                numpart.splice(operador.indexOf("/")+1, 1)
-            }
-        }
-        visor.value += resul
+        resul = eval(visorInfo.join(""))
+        visor.value += parseFloat(resul.toFixed(8)).toString().replace(".", ",")
         resAtivo = true
-        numpart = []
-        operador = []
-        digito = []
         visorInfo = []
         visorInfo.push(resul)
     }
