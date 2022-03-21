@@ -42,6 +42,7 @@ let visorInfo = new Array
 let point = 0
 let symbol = 0
 let resul = 0
+let posi
 let resAtivo = false
 
 function numAdd(num) {
@@ -129,7 +130,7 @@ function playOperation(acao) {
         }
         numpart.push(Number(digito.join("")))
         
-        for (let i=0; i<=numpart.length; i++) {
+        /*for (let i=0; i<=numpart.length; i++) {
             if (i==0) {
                 resul = 0
                 resul = numpart[i]
@@ -148,12 +149,42 @@ function playOperation(acao) {
                     resul /= numpart[i]
                 }
             }
+        }*/
+        if (operador.indexOf("*")!=-1) {
+            if (resAtivo) {
+                resul *= numpart[operador.indexOf("*")+1]
+                operador.splice(operador.indexOf("*"), 1)
+                numpart.splice(operador.indexOf("*"), 1)
+                numpart.splice(operador.indexOf("*")+1, 1)
+            }
+            else {
+                resul = numpart[operador.indexOf("*")]
+                resul *= numpart[operador.indexOf("*")+1]
+                operador.splice(operador.indexOf("*"), 1)
+                numpart.splice(operador.indexOf("*"), 1)
+                numpart.splice(operador.indexOf("*")+1, 1)
+            }
+        }
+        if (operador.indexOf("/")!=-1) {
+            if (resAtivo) {
+                resul /= numpart[operador.indexOf("/")+1]
+                operador.splice(operador.indexOf("/"), 1)
+                numpart.splice(operador.indexOf("/"), 1)
+                numpart.splice(operador.indexOf("/")+1, 1)
+            }
+            else {
+                resul = numpart[operador.indexOf("/")]
+                resul /= numpart[operador.indexOf("/")+1]
+                operador.splice(operador.indexOf("/"), 1)
+                numpart.splice(operador.indexOf("/"), 1)
+                numpart.splice(operador.indexOf("/")+1, 1)
+            }
         }
         visor.value += resul
         resAtivo = true
-        digito = []
         numpart = []
         operador = []
+        digito = []
         visorInfo = []
         visorInfo.push(resul)
     }
