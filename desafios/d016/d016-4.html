@@ -1,0 +1,24 @@
+<script>
+    let random = Math.floor(Math.random()*(10+1+0))
+    let chances = 3
+    let acertos = false
+    let num
+
+    while (chances>0) {
+        num = Number(prompt("Chute um número entre 0 e 10: "))
+        if (num==random) {
+            alert(`Parabéns, você acertou!!!\nO número aleatório era ${random}`)
+            acertos = true
+            break;
+        }
+        else {
+            alert("Que pena, você errou!!")
+            chances--
+            alert(`Você ainda tem ${chances} chances`)
+        }
+    }
+
+    if (!acertos) {
+        alert(`Parece que você errou em todas as suas tentativas, que pena!\nO número aleatório era ${random}`)
+    }
+</script>
