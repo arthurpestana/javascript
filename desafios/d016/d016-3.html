@@ -1,0 +1,31 @@
+<script>
+    let carr = Number(prompt("Você quer seguir para área de Front-End ou seguir para a área de Back-End\nDigite 1 para Front-End e 2 para Back-End"))
+    let ling
+    if (carr==1) {
+        ling = prompt("Você quer aprender React ou aprender Vue? ")
+        carr = "Front-End"
+    }
+    else if (carr==2) {
+        ling = prompt("Você quer aprender C# ou aprender Java? ")
+        carr = "Back-End"
+    }
+    else {
+        alert("Opção inválida")
+    }
+
+    let form = confirm("Você irá seguir se especializando na área escolhida ou seguir se desenvolvendo para se tornar Fullstack?\nAperte Confirm se for se Especializar na área ou aperte Cancel se for se desenvolver no FullStack")
+    if (form) {
+        alert(`Você deve seguir estudando recursos e linguagens da sua área (${carr}). Boa Sorte!!!`)
+    }
+    else {
+        alert(`Você deve se especializar na outra área da informática, já que você está estudando ${carr}. Boa Sorte!!`)
+    }
+
+    let go = confirm("Tem mais alguma tecnologia que você gostaria de aprender?")
+    let tec
+    while (go) {
+        tec = prompt("Qual tecnologia você gostaria de se especializar? ")
+        alert(`Boa sorte no aprendizado dessa tecnologia(${tec})`)
+        go = confirm("Tem mais alguma tecnologia que você gostaria de aprender?")
+    }
+</script>
