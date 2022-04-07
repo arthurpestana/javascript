@@ -1,0 +1,49 @@
+<script>
+    let go = confirm("Você quer adicionar alguma comida na lista de compras?")
+    let comida, cat, remove, removeOpt
+    let frutas = new Array
+    let laticinios = new Array
+    let congelados = new Array
+    let doces = new Array
+    while (go) {
+        comida = (prompt("Qual comida você deseja inserir? "))
+        cat = prompt("Em qual categoria essa comida se encaixa?\nFrutas (1)\tLaticínios (2)\tCongelados (3)\tDoces (4)")
+        if (cat==1) {
+            frutas.push(comida)
+        }
+        else if (cat==2) {
+            laticinios.push(comida)
+        }
+        else if (cat==3) {
+            congelados.push(comida)
+        }
+        else if (cat==4) {
+            doces.push(comida)
+        }
+        else {
+            alert("Opção Inválida!!")
+        }
+        remove = confirm("Você deseja remover algum item da lista?")
+        if (remove) {
+            removeOpt = prompt(`Frutas: ${frutas}\nLaticínios: ${laticinios}\nCongelados: ${congelados}\nDoces: ${doces}`)
+            if (frutas.includes(removeOpt)) {
+                frutas.splice(frutas.indexOf(removeOpt, 0), 1)
+            }
+            else if (laticinios.includes(removeOpt)) {
+                laticinios.splice(laticinios.indexOf(removeOpt, 0), 1)
+            }
+            else if (congelados.includes(removeOpt)) {
+                congelados.splice(congelados.indexOf(removeOpt, 0), 1)
+            }
+            else if (doces.includes(removeOpt)) {
+                doces.splice(doces.indexOf(removeOpt, 0), 1)
+            }
+            else {
+                alert("Não foi possível encontrar o item dentro da lista!")
+            }
+            alert(`Frutas: ${frutas}\nLaticínios: ${laticinios}\nCongelados: ${congelados}\nDoces: ${doces}`)
+        }
+        go = confirm("Você quer adicionar alguma comida na lista de compras?")
+    }
+    alert(`Frutas: ${frutas}\nLaticínios: ${laticinios}\nCongelados: ${congelados}\nDoces: ${doces}`)
+</script>
