@@ -1,0 +1,46 @@
+<script>
+    let num1
+    let num2
+    let sair = true
+    alert("Calculadora Básica")
+    do {
+        opera = Number(prompt("Opções:\t(1)Adição\t(2)Subtração\t(3)Multiplicação\t(4)Divisão\n\nQual opção você deseja executar: "))
+        num1 = Number(prompt("Digite o primeiro número da operação: "))
+        num2 = Number(prompt("Digite o segundo número da operação: "))
+        switch (opera) {
+            case 1:
+                alert(`A soma entre o ${num1} e ${num2} é = ${Add()}`)
+                break;
+            case 2:
+                alert(`A subtração entre o ${num1} e ${num2} é = ${Sub()}`)
+                break;
+            case 3:
+                alert(`A multiplicação entre entre o ${num1} e ${num2} é = ${Multi()}`)
+                break;
+            case 4:
+                alert(`A divisão entre o ${num1} e ${num2} é = ${Div()}`)
+                break;
+            default:
+                alert("Opção Inválida!!")
+                break;
+        }
+        Sair()
+    }while(sair)
+
+    function Add() {
+        return num1+num2
+    }
+    function Sub() {
+        return num1-num2
+    }
+    function Multi() {
+        return num1*num2
+    }
+    function Div() {
+        return num1/num2
+    }
+    function Sair() {
+        sair = confirm("Você deseja continuar usando a calculadora?")
+        alert("Até a próxima!!")
+    }
+</script>
