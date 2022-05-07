@@ -1,2 +1,3 @@
 # javascript
- Curso de JavaScript do CursoemVídeo
+ Repositório de JavaScript
+
