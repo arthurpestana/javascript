@@ -87,16 +87,7 @@ function playOperation(acao) {
             symbol = 0
         }
     }
-    else if (acao=="+") {  
-        verificaVisor(acao)
-    }
-    else if (acao=="-") {
-        verificaVisor(acao)
-    }
-    else if (acao=="*") {
-        verificaVisor(acao)
-    }
-    else if (acao=="/") {
+    else if (acao=="+" || acao=="-" || acao=="*" || acao=="/") {  
         verificaVisor(acao)
     }
     else if (acao=="c") {
