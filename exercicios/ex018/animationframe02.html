@@ -24,7 +24,7 @@
     <div id="box"></div>
     <script>
         let ang=0, vel=16
-        let anima
+        let anima, state = 0
         let obj = document.querySelector("#box")
         requestAnimationFrame(girar)
         function girar() {
@@ -34,7 +34,19 @@
                 ang=0
             }
             anima = requestAnimationFrame(girar)
+            state = 1
         }
+
+        obj.addEventListener('click', () => {
+            if (state==1) {
+                cancelAnimationFrame(anima)
+                state=0
+            }
+            else {
+                state=1
+                anima = requestAnimationFrame(girar)
+            }
+        })
     </script>
 </body>
 </html>

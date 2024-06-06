@@ -12,6 +12,11 @@
             border: 1px solid black;
         }
 
+        .caixa {
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
         .c1 {
             background-color: red;
         }
@@ -31,7 +36,7 @@
     <button onclick="trocaCor(3)">Cor 3</button>
     <button onclick="removerCor()">Remover Cor</button>
     <button onclick="verifica()">Verifica</button>
-    <div id="bloco"></div>
+    <div id="bloco" class="caixa"></div>
 
     <script>
         let bloco = document.querySelector("#bloco")
